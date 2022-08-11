@@ -1,6 +1,5 @@
 package com.survey.surveyapplication.controller;
 
-
 import com.survey.surveyapplication.dto.SurveyDto;
 import com.survey.surveyapplication.service.SurveyServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,6 @@ public class SurveyController {
 
     @PostMapping
     public Long createSurvey(@RequestBody SurveyDto surveyDto) {
-
         return surveyService.createSurvey(surveyDto);
     }
 

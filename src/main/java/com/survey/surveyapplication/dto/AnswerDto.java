@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class QuestionDto {
-    private String questionDescription;
-    private Set<AnswerDto> answers;
+public class AnswerDto {
+    private String answerDescription;
+    private boolean answered;
 }

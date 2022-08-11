@@ -24,7 +24,8 @@ public class Survey {
     private String surveyName;
     @OneToMany(
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     @JoinColumn(name = "survey_id")
     private Set<Question> questions = new HashSet<>();

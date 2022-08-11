@@ -22,11 +22,14 @@ public class SurveyMapper implements Mappable<Survey, SurveyDto> {
         }
         Survey survey = new Survey();
         survey.setSurveyName(surveyDto.getSurveyName());
-        Set<Question> questions = surveyDto.getQuestions().stream()
-                .map(questionsMapper::toEntity).collect(Collectors.toSet());
+        Set<Question> questions = getQuestions(surveyDto);
         survey.setQuestions(questions);
-
         return survey;
+    }
+
+    private Set<Question> getQuestions(SurveyDto surveyDto) {
+        return surveyDto.getQuestions().stream()
+                .map(questionsMapper::toEntity).collect(Collectors.toSet());
     }
 
     @Override
@@ -36,9 +39,13 @@ public class SurveyMapper implements Mappable<Survey, SurveyDto> {
         }
         SurveyDto surveyDto = new SurveyDto();
         surveyDto.setSurveyName(survey.getSurveyName());
-        Set<QuestionDto> questionDtos = survey.getQuestions().stream()
-                .map(questionsMapper::toDto).collect(Collectors.toSet());
+        Set<QuestionDto> questionDtos = getQuestionDtos(survey);
         surveyDto.setQuestions(questionDtos);
         return surveyDto;
+    }
+
+    private Set<QuestionDto> getQuestionDtos(Survey survey) {
+        return survey.getQuestions().stream()
+                .map(questionsMapper::toDto).collect(Collectors.toSet());
     }
 }
